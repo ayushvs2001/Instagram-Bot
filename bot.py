@@ -40,10 +40,6 @@ try:
             following = set(lst2) - set(["HASHTAGS", "PEOPLE", "", "1","POSTS", "SAVED", "IGTV", "TAGGED", "Edit Profile", r".* followers", r" .*! following"])
             unfollowers = following - followers
             not_follow = followers - following
-
-            print(f"len of followers {len(lst1)}")
-            print(f"len of following {len(lst2)}")
-
             root.withdraw()
             top = Toplevel()
             top.title("STUDENT DATABASE")
@@ -59,8 +55,7 @@ try:
                     current_page_user_name = driver.find_element_by_xpath(
                         "/html/body/div[1]/section/main/div/header/section/div[1]/h2")
                     current_page_user_name = current_page_user_name.text
-                    print("comparing name", current_page_user_name == username)
-
+                    
                     if current_page_user_name == username:
                         return True
                     else:
@@ -69,8 +64,6 @@ try:
                         search_button.click()
                         time.sleep(3)
 
-                        print("yo")
-
                         search_box = driver.find_element_by_xpath(
                             '//*[@id="react-root"]/section/nav/div[2]/div/div/div[2]/input')
                         search_box.send_keys(username)
@@ -78,8 +71,6 @@ try:
 
                         search_name = driver.find_element_by_xpath("/html/body/div[1]/section/nav/div[2]/div/div/div[2]/div[4]/div/a[1]/div/div[2]/div/span")
                         first_serch_name = search_name.text
-
-                        print(f"first serach name {first_serch_name} and username {username} and equal {first_serch_name==username}")
 
                         if first_serch_name == username:
                             click_on_user = driver.find_element_by_xpath(
@@ -152,12 +143,11 @@ try:
                            "/html/body/div[1]/section/main/div/header/section/div[1]/div[1]/div/div[2]/div/span/span[1]/button")
                        unfollow_enter.click()
                        time.sleep(3)
-                       print("we enter in unfollow")
-
-                       cancel_button = driver.find_element_by_xpath("/html/body/div[5]/div/div/div/div[3]/button[2]")
+                       
+                       cancel_button = driver.find_element_by_xpath("/html/body/div[5]/div/div/div/div[3]/button[1]")
                        cancel_button.click()
                        time.sleep(3)
-                       print("we click cancel button")
+                       
 
                        following.remove(username)
                        unfollowers = following - followers
