@@ -2,4 +2,4 @@
 Instagram Bot
 
 
-# <img src="ibot.png" width="350" height="600">
+# <img src="ibot.png" width="500" height="250">
